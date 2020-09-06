@@ -1,35 +1,28 @@
 package com.skilldistillery.foodproject;
 
 public class FoodTruck {
-	private static int truckCount;
-	
-	private double rating;
+	private static int truckId = 5089;
+	private int nextTruckId;
+
 	private String foodType;
 	private String name;
-	private int truckId;
+	private double rating;
 
-	
-	public FoodTruck() 
-	{
-		++truckCount;
-		truckId = truckCount;
+	public FoodTruck() {
+
 	}
-	
 
-	public FoodTruck(int truckId, double rating, String foodType, String name) {
-		this.truckId = FoodTruck.truckCount;
-		this.rating = rating;
-		this.foodType = foodType;
+	public FoodTruck(String name, String foodType, double rating) {
 		this.name = name;
+		this.foodType = foodType;
+		this.rating = rating;
 
 	}
 
-	public int getNumericId() {
-		return truckCount;
-	}
-
-	public void setNumericId(int numericId) {
-		FoodTruck.truckCount = numericId;
+	public FoodTruck(String name, String foodType, double rating, int truckId) {
+		this(name, foodType, rating);
+		FoodTruck.truckId = truckId;
+		this.nextTruckId = FoodTruck.truckId;
 	}
 
 	public double getRating() {
@@ -55,29 +48,36 @@ public class FoodTruck {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	public int getTruckId(int truckId) {
+
+	public static int getTruckId() {
 		return truckId;
 	}
-	
-	public void setTruckId(int truckId) {
-		this.truckId = FoodTruck.truckCount;
-	}
-	
-	
 
+	public static void setTruckId(int truckId) {
+		FoodTruck.truckId = truckId;
+	}
+
+	public int getNextTruckId() {
+		return nextTruckId;
+	}
+
+	public void setNextTruckId(int nextTruckId) {
+		this.nextTruckId = FoodTruck.truckId++;
+	}
+
+	@Override
 	public String toString() {
-		String output = "Name: " + name + " , Food type: " + foodType + " , Rating: " + rating + " , Numeric Id : "
-				+ truckId + " , truck count " + truckId; 
-		return output;
+		StringBuilder builder = new StringBuilder();
+		builder.append("FoodTruck [nextTruckId=").append(nextTruckId).append(", foodType=").append(foodType)
+				.append(", name=").append(name).append(", rating=").append(rating).append("]");
+		return builder.toString();
 	}
 
 	public void displayFoodTruck() {
 		String foodTruckData = this.toString();
 		System.out.println(foodTruckData);
-		
+
 	}
-	
 
 }
 
@@ -85,4 +85,5 @@ public class FoodTruck {
 //food type ("Tacos", "Falafel", etc.), and a numeric rating.
 //
 //You will create a separate class with a main method that starts the program. It will have an array to store up to five FoodTruck 
+//objects. The main method of this class is the only static method in the entire project.
 //objects. The main method of this class is the only static method in the entire project.

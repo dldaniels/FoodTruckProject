@@ -3,25 +3,95 @@ package com.skilldistillery.foodproject;
 import java.util.Scanner;
 
 public class FoodTruckMain {
+	FoodTruck[] foodTruckArray = new FoodTruck[5];
+	FoodTruck foodTruck;
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-	
-		
-	
-	}
-	
-	public void userInput() {
-		Scanner kb = new Scanner(System.in);
-		
-		FoodTruck [ ] foodTruckArray;
-		foodTruckArray = new FoodTruck[5];
-		
-		System.out.print("Enter the food truck name: ");
-		
-		
+		FoodTruckMain project = new FoodTruckMain();
+
+		project.mainMenu();
+		project.start();
+
 	}
 
+	public void mainMenu() {
+
+		System.out.println("::::::::::::::::::::::::::::::::::::");
+		System.out.println("::::::::::::::::::::::::::::::::::::");
+		System.out.println(":::::::Welcome To The Food Truck::::");
+		System.out.println("::::::::::::::::Tracker:::::::::::::");
+		System.out.println("::::::::::::::::::::::::::::::::::::");
+		System.out.println("::Please begin entering truck info::");
+		System.out.println("::You may enter up to five trucks:::");
+		System.out.println(" Enter Quit at truck name to move on");
+		System.out.println("::::::::::::::::::::::::::::::::::::");
+		System.out.println();
+		System.out.println();
+	}
+
+	public void start() {
+
+		Scanner kb = new Scanner(System.in);
+		foodTruck = new FoodTruck();
+		boolean keepGoing = true;
+		int truckCount = 1;
+
+		while (keepGoing) {
+
+			if (truckCount == 6) {
+				keepGoing = false;
+				break;
+			}
+
+			System.out.print("Enter the food truck name for truck " + truckCount + ": ");
+			String truckName = kb.nextLine();
+
+			if (truckName.equalsIgnoreCase("Quit")) {
+				keepGoing = false;
+				break;
+			}
+
+			System.out.print("Enter the type of food served on  " + truckName + " ");
+			String foodType = kb.nextLine();
+
+			System.out.print("Enter the rating for " + truckName + " ");
+			double truckRating = kb.nextDouble();
+			kb.nextLine();
+
+			System.out.println();
+
+			foodTruck.setName(truckName);
+			foodTruck.setFoodType(foodType);
+			foodTruck.setRating(truckRating);
+			truckCount++;
+			//
+			// foodTruck.getName(truckName);
+			// foodTruck.getFoodType();
+			// foodTruck.getRating();
+
+
+//
+		//	 for (int i = 0; i < foodTruckArray.length; i++) {
+		//	 foodTruck = foodTruckArray[i]; foodTruck.toString();
+
+		//	 }
+
+			// foodTruck.toString();
+
+		}
+
+		// private void enterTrucks(Scanner kb) {
+
+		// System.out.println(foodTruckArray[0]);
+
+		// System.out.println(foodTruckArray[i].toString());
+
+		// foodTruck.toString();
+
+		// }
+
+		kb.close();
+	}
 }
 
 /*
