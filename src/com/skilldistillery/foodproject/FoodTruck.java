@@ -35,6 +35,7 @@ public class FoodTruck {
 //	}
 
 	public double getRating() {
+		
 		return rating;
 	}
 

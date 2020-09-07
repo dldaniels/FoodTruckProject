@@ -3,7 +3,7 @@ package com.skilldistillery.foodproject;
 import java.util.Scanner;
 
 public class FoodTruckMain {
-	
+
 	private int maxTrucks = 5;
 	private int numTrucks = 0;
 
@@ -74,25 +74,27 @@ public class FoodTruckMain {
 	}
 
 	public void displayFoodTrucks(FoodTruck[] foodTrucks) {
-		for(int i = 0; i < foodTrucks.length; i++) {
+		for (int i = 0; i < foodTrucks.length; i++) {
 			if (foodTrucks[i] != null) {
-				System.out.println(foodTrucks[i]);
+				foodTrucks[i].displayFoodTruck();
 			}
-
 		}
-
 	}
 
 	public void displayAverage(FoodTruck[] foodTrucks) {
-
 		double sumOfRatings = 0;
-
-		for (FoodTruck foodTruck : foodTrucks) {
-			double rating = foodTruck.getRating();
-			sumOfRatings = sumOfRatings + rating;
-		}
 		double averageRating = 0;
-		averageRating = sumOfRatings / foodTrucks.length;
+		int counter = 0;
+
+		for (int i = 0; i < foodTrucksArray.length; i++) {
+			if (foodTrucksArray[i] != null) {
+				double ratings = foodTrucksArray[i].getRating();
+				sumOfRatings = sumOfRatings + ratings;
+				counter = i + 1;
+			}
+		}
+		averageRating = sumOfRatings / counter;
+
 		System.out.println("The average rating of all " + numTrucks + " trucks is " + averageRating + ".");
 	}
 
@@ -104,18 +106,21 @@ public class FoodTruckMain {
 		int truckId = 0;
 
 		for (FoodTruck foodTruck : foodTrucks) {
-			double ratings = foodTruck.getRating();
-			if (topRating < ratings) {
-				topRating = ratings;
-				name = foodTruck.getName();
-				foodType = foodTruck.getFoodType();
-				truckId = foodTruck.getNextTruckId();
-			
-			}
-		}
+			if (foodTruck != null) {
+				double ratings = foodTruck.getRating();
+				if (topRating < ratings) {
+					topRating = ratings;
+					name = foodTruck.getName();
+					foodType = foodTruck.getFoodType();
+					truckId = foodTruck.getNextTruckId();
 
+				}
+			}
+
+		}
 		System.out.println("The highest rated truck out of your selections with a rating of " + topRating + " is \n"
-				+ name + " that serves up some most excellent " + foodType + ", this truck has an ID number of " + truckId);
+				+ name + " that serves up some most excellent " + foodType + ", this truck has an ID number of "
+				+ truckId);
 	}
 
 	public void menu2() {
@@ -196,21 +201,21 @@ public class FoodTruckMain {
 		System.out.println("             |       |     |       |                         ");
 		System.out.println("             ---------     ---------                                   ");
 		System.out.println("               )                 (           ");
-		System.out.println("                )      0 0      (          ");
+		System.out.println("                )       00      (          ");
 		System.out.println("                 )             (                                                ");
 		System.out.println("                 |             |             ");
 		System.out.println("                 |_____________|          ");
 		System.out.println("                 |             |                   ");
 		System.out.println("            ~~~  )             (  ~~~                   ");
-		System.out.println("        ~~~~    )    /    \\     (    ~~~~                    ");
-		System.out.println("    ~~~~        \\    \\    /     /       ~~~~                ");
-		System.out.println("                 \\~~~ --- ~~~~ /                             ");
-		System.out.println("                     |    |                               ");
-		System.out.println("                     |    |                               ");
-		System.out.println("                     |    |                                ");
-		System.out.println("                     |    |                              ");
-		System.out.println("                      \\  /                               ");
-		System.out.println("                       \\/                                ");
+		System.out.println("        ~~~~    )     /    \\    (    ~~~~                    ");
+		System.out.println("    ~~~~        \\     \\    /    /       ~~~~                ");
+		System.out.println("                 \\~~~~ --- ~~~~/                             ");
+		System.out.println("                      |    |                               ");
+		System.out.println("                      |    |                               ");
+		System.out.println("                      |    |                                ");
+		System.out.println("                      |    |                              ");
+		System.out.println("                       \\  /                               ");
+		System.out.println("                        \\/                                ");
 		System.out.println("                                       ");
 		System.out.println(" Exiting Milo's Food Truck app... ");
 
