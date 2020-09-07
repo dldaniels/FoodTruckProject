@@ -12,18 +12,27 @@ public class FoodTruck {
 
 	}
 
+//	public FoodTruck(int nextTruckId) {
+
+//		truckId = nextTruckId;
+//		truckId++;
+
+//	}
+
 	public FoodTruck(String name, String foodType, double rating) {
 		this.name = name;
 		this.foodType = foodType;
 		this.rating = rating;
+		this.nextTruckId = truckId;
+		truckId++;
 
 	}
 
-	public FoodTruck(String name, String foodType, double rating, int truckId) {
-		this(name, foodType, rating);
-		FoodTruck.truckId = truckId;
-		this.nextTruckId = FoodTruck.truckId;
-	}
+//	public FoodTruck(String name, String foodType, double rating, int truckId) {
+//		this(name, foodType, rating);
+		// FoodTruck.truckId = truckId;
+
+//	}
 
 	public double getRating() {
 		return rating;
@@ -41,7 +50,7 @@ public class FoodTruck {
 		this.foodType = foodType;
 	}
 
-	public String getName(String name) {
+	public String getName() {
 		return name;
 	}
 
@@ -49,12 +58,12 @@ public class FoodTruck {
 		this.name = name;
 	}
 
-	public static int getTruckId() {
+	public int getTruckId() {
 		return truckId;
 	}
 
-	public static void setTruckId(int truckId) {
-		FoodTruck.truckId = truckId;
+	public void setTruckId(int truckId) {
+		FoodTruck.truckId = truckId++;
 	}
 
 	public int getNextTruckId() {
@@ -62,14 +71,13 @@ public class FoodTruck {
 	}
 
 	public void setNextTruckId(int nextTruckId) {
-		this.nextTruckId = FoodTruck.truckId++;
+		this.nextTruckId = FoodTruck.truckId;
 	}
 
-	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("FoodTruck [nextTruckId=").append(nextTruckId).append(", foodType=").append(foodType)
-				.append(", name=").append(name).append(", rating=").append(rating).append("]");
+		builder.append(" Name = ").append(name).append(", Food Type = ").append(foodType).append(", Rating = ")
+				.append(rating).append(", Truck ID = ").append(nextTruckId);
 		return builder.toString();
 	}
 
