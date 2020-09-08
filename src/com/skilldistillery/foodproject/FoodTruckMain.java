@@ -14,13 +14,13 @@ public class FoodTruckMain {
 	public static void main(String[] args) {
 		FoodTruckMain app = new FoodTruckMain();
 
+		app.weclomeScreen();
+		app.buildTrucks();
 		app.mainMenu();
-		app.programLoop();
-		app.menu2();
 
 	}
 
-	public void programLoop() {
+	public void buildTrucks() {
 
 		boolean keepGoing = true;
 		int truckCount = 1;
@@ -28,24 +28,26 @@ public class FoodTruckMain {
 		while (keepGoing) {
 
 			if (truckCount == 6) {
-				System.out.println("You have chosen to enter information for " + --truckCount + " food truck(s). ");
+				System.out.println();
+				System.out.println(" You have chosen to enter information for " + --truckCount + " food truck(s). ");
 				keepGoing = false;
 				break;
 			}
 
-			System.out.print("Enter the food truck name for truck " + truckCount + ": ");
+			System.out.print(" Enter the food truck name for truck " + truckCount + ": ");
 			String truckName = kb.nextLine();
 
 			if (truckName.equalsIgnoreCase("Quit")) {
-				System.out.println("You have chosen to enter information for " + --truckCount + " food truck(s). ");
+				System.out.println();
+				System.out.println(" You have chosen to enter information for " + --truckCount + " food truck(s). ");
 				keepGoing = false;
 				break;
 			}
 
-			System.out.print("Enter the type of food served on  " + truckName + " ");
+			System.out.print(" Enter the type of food served on " + truckName + " ");
 			String foodType = kb.nextLine();
 
-			System.out.print("Enter the rating for " + truckName + " ");
+			System.out.print(" Enter the rating for " + truckName + " ");
 			double truckRating = kb.nextDouble();
 			kb.nextLine();
 
@@ -59,9 +61,9 @@ public class FoodTruckMain {
 		}
 	}
 
-	public void addTruck(FoodTruck foodTruck) {
+	private void addTruck(FoodTruck foodTruck) {
 		if (numTrucks == maxTrucks) {
-			System.out.println("You have reached the maximum number of Food Trucks");
+			System.out.println(" You have reached the maximum number of Food Trucks");
 		} else {
 			for (int i = 0; i < foodTrucksArray.length; i++) {
 				if (foodTrucksArray[i] == null) {
@@ -73,7 +75,8 @@ public class FoodTruckMain {
 		}
 	}
 
-	public void displayFoodTrucks(FoodTruck[] foodTrucks) {
+	private void displayFoodTrucks(FoodTruck[] foodTrucks) {
+		System.out.println(" Here are all of the food trucks that you have entered. ");
 		for (int i = 0; i < foodTrucks.length; i++) {
 			if (foodTrucks[i] != null) {
 				foodTrucks[i].displayFoodTruck();
@@ -81,7 +84,7 @@ public class FoodTruckMain {
 		}
 	}
 
-	public void displayAverage(FoodTruck[] foodTrucks) {
+	private void displayAverage(FoodTruck[] foodTrucks) {
 		double sumOfRatings = 0;
 		double averageRating = 0;
 		int counter = 0;
@@ -95,15 +98,20 @@ public class FoodTruckMain {
 		}
 		averageRating = sumOfRatings / counter;
 
-		System.out.println("The average rating of all " + numTrucks + " trucks is " + averageRating + ".");
+		System.out.print(" The average rating of all " + numTrucks + " trucks is ");
+		System.out.printf("%.1f%n", averageRating);
+		System.out.println();
 	}
 
-	public void winner(FoodTruck[] foodTrucks) {
+	private void winner(FoodTruck[] foodTrucks) {
 
 		double topRating = 0;
 		String name = "";
 		String foodType = "";
 		int truckId = 0;
+		String output = "";
+		System.out.println(" The highest rated truck out of your selections is shown below.");
+		System.out.println();
 
 		for (FoodTruck foodTruck : foodTrucks) {
 			if (foodTruck != null) {
@@ -113,17 +121,18 @@ public class FoodTruckMain {
 					name = foodTruck.getName();
 					foodType = foodTruck.getFoodType();
 					truckId = foodTruck.getNextTruckId();
-
+					output = foodTruck.toString();
 				}
 			}
 
 		}
-		System.out.println("The highest rated truck out of your selections with a rating of " + topRating + " is \n"
-				+ name + " that serves up some most excellent " + foodType + ", this truck has an ID number of "
-				+ truckId);
+		System.out.println(output);
+		System.out.println();
+		System.out.println(" With a top rating of " + topRating + " is " + name + " that serves up some most excellent "
+				+ foodType + ", this truck has an ID number of " + truckId);
 	}
 
-	public void menu2() {
+	private void mainMenu() {
 		Scanner kb = new Scanner(System.in);
 
 		boolean keepGoing = true;
@@ -171,7 +180,7 @@ public class FoodTruckMain {
 
 	}
 
-	public void mainMenu() {
+	private void weclomeScreen() {
 
 		System.out.println("::::::::::::::::::::::::::::::::::::");
 		System.out.println("::Welcome To Milo's Food Truck App::");
@@ -186,7 +195,7 @@ public class FoodTruckMain {
 		System.out.println();
 	}
 
-	public void theEnd() {
+	private void theEnd() {
 
 		System.out.println();
 		System.out.println();
@@ -202,7 +211,7 @@ public class FoodTruckMain {
 		System.out.println("             ---------     ---------                                   ");
 		System.out.println("               )                 (           ");
 		System.out.println("                )       00      (          ");
-		System.out.println("                 )             (                                                ");
+		System.out.println("                 )             (      ");
 		System.out.println("                 |             |             ");
 		System.out.println("                 |_____________|          ");
 		System.out.println("                 |             |                   ");
@@ -214,32 +223,10 @@ public class FoodTruckMain {
 		System.out.println("                      |    |                               ");
 		System.out.println("                      |    |                                ");
 		System.out.println("                      |    |                              ");
-		System.out.println("                       \\  /                               ");
-		System.out.println("                        \\/                                ");
-		System.out.println("                                       ");
 		System.out.println(" Exiting Milo's Food Truck app... ");
 
 	}
 }
-
-//
-// foodTruck.getName(truckName);
-// foodTruck.getFoodType();
-// foodTruck.getRating();
-
-//
-
-// foodTruck.toString();
-
-// private void enterTrucks(Scanner kb) {
-
-// System.out.println(foodTruckArray[0]);
-
-// System.out.println(foodTruckArray[i].toString());
-
-// foodTruck.toString();
-
-// }
 
 /*
  * User Story #1 The user is prompted to input the name, food type, and rating
@@ -259,14 +246,4 @@ public class FoodTruckMain {
  * the highest-rated food truck. Quit the program. User Story #4 After choosing
  * a menu item, the user sees the menu again and can choose another item until
  * the choose to quit.
- */
-
-/*
- * public FoodTruck[] getFoodTrucks() { FoodTruck[] truckCopy = new
- * FoodTruck[MAX_TRUCKS]; truckCopy = new FoodTruck[numTrucks]; for (int i = 0;
- * i < numTrucks; i++) { truckCopy[i] = foodTrucksArray[i];
- * truckCopy.toString(); } return truckCopy;
- * 
- * 
- * }
  */

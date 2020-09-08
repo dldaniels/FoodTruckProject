@@ -12,13 +12,6 @@ public class FoodTruck {
 
 	}
 
-//	public FoodTruck(int nextTruckId) {
-
-//		truckId = nextTruckId;
-//		truckId++;
-
-//	}
-
 	public FoodTruck(String name, String foodType, double rating) {
 		this.name = name;
 		this.foodType = foodType;
@@ -28,14 +21,8 @@ public class FoodTruck {
 
 	}
 
-//	public FoodTruck(String name, String foodType, double rating, int truckId) {
-//		this(name, foodType, rating);
-		// FoodTruck.truckId = truckId;
-
-//	}
-
 	public double getRating() {
-		
+
 		return rating;
 	}
 
@@ -77,8 +64,8 @@ public class FoodTruck {
 
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append(" Name = ").append(name).append(", Food Type = ").append(foodType).append(", Rating = ")
-				.append(rating).append(", Truck ID = ").append(nextTruckId);
+		builder.append(" Food truck: ").append(name).append(", Food served: ").append(foodType).append(", Rating; ")
+				.append(rating).append(", Truck ID: ").append(nextTruckId);
 		return builder.toString();
 	}
 
@@ -94,5 +81,4 @@ public class FoodTruck {
 //food type ("Tacos", "Falafel", etc.), and a numeric rating.
 //
 //You will create a separate class with a main method that starts the program. It will have an array to store up to five FoodTruck 
-//objects. The main method of this class is the only static method in the entire project.
 //objects. The main method of this class is the only static method in the entire project.
